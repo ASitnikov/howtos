@@ -29,9 +29,12 @@ Apply the changes.
 
 You may want to change boot order on "Firmware" tab after that.
 
-# Step 4. Install Ubuntu
+## Step 4. Install Ubuntu
 
 Power on the Virtual machine and when Ubuntu installer is loaded state that you're going to Install Ubuntu.
+
+> *Note: The following part is needed to format ext4 with parameter recommmended for Hyper-V installations by Microsoft (`-G 4096`).
+> I forgot to check how Ubuntu installer formats by default.
 
 Microsoft recommends to set number of groups to 4096 for ext4. It cannot be done from GUI.
 So press *Ctrl-Alt-2* to switch to console. Use *ubuntu* with blank password to login.
@@ -43,8 +46,8 @@ Run parted
 In parted issue the following commands:
 
     mktable gpt
-    mkpart primary fat32 1MiB 513MiB
-    mkpart primary ext4 513MiB -0
+    mkpart EFI fat32 1MiB 513MiB
+    mkpart Ubuntu ext4 513MiB -0
     set 1 boot on
     quit
     
@@ -57,6 +60,14 @@ Return back to the UI by pressing *Alt-1*. Go on till "Installation type" screen
 You should see the paritions created before. Select /dev/sda2 and press "Change...".
 In the opened dialog select "Ext4 journaling file system" for "Use as" and */* as "Mount point".
 
+Continue with installation.
+
+## Step 5. Install Hyper-V additions
+
+Boot into Ubuntu. Open terminal and install linux-azure package
+
+    sudo apt install linux-azure
+
+Enjoy your new Ubuntu!
+
 [1]: https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/best-practices-for-running-linux-on-hyper-v
-    
-    
