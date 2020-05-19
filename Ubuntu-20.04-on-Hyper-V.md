@@ -67,7 +67,12 @@ Continue with installation.
 Boot into Ubuntu. Open terminal and install linux-azure package
 
     sudo apt install linux-azure
+    
+## Step 6. Install xRDP (optional)
 
-Enjoy your new Ubuntu!
+You may consider to install xRDP support for Ubuntu. The easiest way to do it by using [script][2] provided by Griffon.
+
+## Step 7. Enjoy your new Ubuntu!
 
 [1]: https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/best-practices-for-running-linux-on-hyper-v
+[2]: http://c-nergy.be/blog/?p=14888
